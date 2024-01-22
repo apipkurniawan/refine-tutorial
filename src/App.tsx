@@ -9,12 +9,16 @@ import routerBindings, {
   NavigateToResource,
   UnsavedChangesNotifier,
 } from '@refinedev/react-router-v6';
-import dataProvider from '@refinedev/simple-rest';
 import { BrowserRouter, Routes, Route, Outlet } from 'react-router-dom';
 import { AntdInferencer } from '@refinedev/inferencer/antd';
 
 import { ConfigProvider } from 'antd';
 import '@refinedev/antd/dist/reset.css';
+
+// opsi data-provider
+import { dataProvider } from './data-provider';
+// import dataProvider from '@refinedev/simple-rest';
+// import { dataProvider } from './rest-data-provider';
 
 const App: React.FC = () => {
   return (
