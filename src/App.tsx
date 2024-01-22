@@ -10,7 +10,6 @@ import routerBindings, {
   UnsavedChangesNotifier,
 } from '@refinedev/react-router-v6';
 import { BrowserRouter, Routes, Route, Outlet } from 'react-router-dom';
-import { AntdInferencer } from '@refinedev/inferencer/antd';
 
 import { ConfigProvider } from 'antd';
 import '@refinedev/antd/dist/reset.css';
@@ -23,6 +22,8 @@ import { dataProvider } from './data-provider';
 // view
 import { BlogPostList } from './pages/blog_posts/list';
 import { BlogPostEdit } from './pages/blog_posts/Edit';
+import { BlogPostShow } from './pages/blog_posts/show';
+import { BlogPostCreate } from './pages/blog_posts/create';
 
 const App: React.FC = () => {
   return (
@@ -39,6 +40,7 @@ const App: React.FC = () => {
               show: '/blog-posts/show/:id',
               create: '/blog-posts/create',
               edit: '/blog-posts/edit/:id',
+              meta: { canDelete: true },
             },
           ]}
           options={{
@@ -60,9 +62,9 @@ const App: React.FC = () => {
               />
               <Route path='blog-posts'>
                 <Route index element={<BlogPostList />} />
-                <Route path='show/:id' element={<AntdInferencer />} />
+                <Route path='show/:id' element={<BlogPostShow />} />
                 <Route path='edit/:id' element={<BlogPostEdit />} />
-                <Route path='create' element={<AntdInferencer />} />
+                <Route path='create' element={<BlogPostCreate />} />
               </Route>
               <Route path='*' element={<ErrorComponent />} />
             </Route>

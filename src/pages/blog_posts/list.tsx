@@ -7,6 +7,7 @@ import {
   ShowButton,
   MarkdownField,
   DateField,
+  DeleteButton,
 } from '@refinedev/antd';
 import { Table, Space } from 'antd';
 
@@ -59,6 +60,7 @@ export const BlogPostList: React.FC<IResourceComponentsProps> = () => {
             <Space>
               <EditButton hideText size='small' recordItemId={record.id} />
               <ShowButton hideText size='small' recordItemId={record.id} />
+              <DeleteButton hideText size='small' recordItemId={record.id} />
             </Space>
           )}
         />
