@@ -8,10 +8,16 @@ import {
   MarkdownField,
   DateField,
   DeleteButton,
+  FilterDropdown,
+  useSelect,
 } from '@refinedev/antd';
-import { Table, Space } from 'antd';
+import { Table, Space, Select } from 'antd';
 
 export const BlogPostList: React.FC<IResourceComponentsProps> = () => {
+  const { selectProps: categorySelectProps } = useSelect({
+    resource: 'categories',
+  });
+
   const { tableProps } = useTable({
     syncWithLocation: true,
   });
@@ -27,7 +33,7 @@ export const BlogPostList: React.FC<IResourceComponentsProps> = () => {
   return (
     <List>
       <Table {...tableProps} rowKey='id'>
-        <Table.Column dataIndex='id' title='Id' />
+        <Table.Column dataIndex='id' title='Id' sorter />
         <Table.Column dataIndex='title' title='Title' />
         <Table.Column
           dataIndex='content'
@@ -46,6 +52,16 @@ export const BlogPostList: React.FC<IResourceComponentsProps> = () => {
               categoryData?.data?.find((item) => item.id === value)?.title
             )
           }
+          filterDropdown={(props) => (
+            <FilterDropdown {...props}>
+              <Select
+                style={{ minWidth: 200 }}
+                mode='multiple'
+                placeholder='Select Category'
+                {...categorySelectProps}
+              />
+            </FilterDropdown>
+          )}
         />
         <Table.Column dataIndex='status' title='Status' />
         <Table.Column
