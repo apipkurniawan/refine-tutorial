@@ -15,10 +15,14 @@ import { AntdInferencer } from '@refinedev/inferencer/antd';
 import { ConfigProvider } from 'antd';
 import '@refinedev/antd/dist/reset.css';
 
-// opsi data-provider
+// data-provider
 import { dataProvider } from './data-provider';
 // import dataProvider from '@refinedev/simple-rest';
 // import { dataProvider } from './rest-data-provider';
+
+// view
+import { BlogPostList } from './pages/blog_posts/list';
+import { BlogPostEdit } from './pages/blog_posts/Edit';
 
 const App: React.FC = () => {
   return (
@@ -55,9 +59,9 @@ const App: React.FC = () => {
                 element={<NavigateToResource resource='blog_posts' />}
               />
               <Route path='blog-posts'>
-                <Route index element={<AntdInferencer />} />
+                <Route index element={<BlogPostList />} />
                 <Route path='show/:id' element={<AntdInferencer />} />
-                <Route path='edit/:id' element={<AntdInferencer />} />
+                <Route path='edit/:id' element={<BlogPostEdit />} />
                 <Route path='create' element={<AntdInferencer />} />
               </Route>
               <Route path='*' element={<ErrorComponent />} />
